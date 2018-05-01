@@ -7,7 +7,20 @@
     <groupId>com.study.toto</groupId>
     <artifactId>toto</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <start-class>com.study.toto.Application</start-class>
+    </properties>
 
     <!-- TODO 1 Spring Boot 1.5.13 등록하기 -->
-
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.13.BUILD-SNAPSHOT</version>
+    </parent>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
 </project>
