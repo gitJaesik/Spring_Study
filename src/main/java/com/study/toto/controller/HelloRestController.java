@@ -1,30 +1,25 @@
 package com.study.toto.controller;
 
-import com.study.toto.Application;
-import com.study.toto.model.mapper.PersonMapper;
+import com.study.toto.model.entity.Person;
+import com.study.toto.service.PersonService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloRestController {
 
-    final public PersonMapper personMapper;
+    @Autowired
+    PersonService personService;
 
-    public HelloRestController () {
-        this.personMapper = null;
-    }
-
-    // TODO 2 "/"로 요청이 들어오면 "Hello"을 리턴하는 RestController 작성
     @GetMapping("/")
     public String Hello () {
         return "Hello";
     }
 
-
-
-    @GetMapping("/person")
-    public String HelloMyBatisAndH2 () {
-        return this.personMapper.findName("jaesik").toString();
+    @GetMapping("/person/{id}")
+    public Person findPerson(@PathVariable("id") Long id) {
+        return personService.findPerson(id);
     }
-
 }

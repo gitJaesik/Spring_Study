@@ -12,10 +12,12 @@
     </properties>
 
     <!-- TODO 1 Spring Boot 1.5.13 등록하기 -->
+    <!-- TODO 1 Spring Boot 1.5.10 등록하기 -->
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.13.BUILD-SNAPSHOT</version>
+        <version>1.5.10.RELEASE</version>
     </parent>
     <dependencies>
         <dependency>
