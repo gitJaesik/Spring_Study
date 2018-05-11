@@ -15,4 +15,7 @@ public class PersonService {
         return personMapper.findById(id);
     }
 
+    public void savePerson(String name, String sex) {
+        personMapper.savePerson(name, sex);
+    }
 }
