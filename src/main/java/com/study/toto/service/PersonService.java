@@ -5,6 +5,8 @@ import com.study.toto.dao.PersonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PersonService {
 
@@ -16,11 +18,19 @@ public class PersonService {
         this.personMapper = personMapper;
     }
 
+    public List<Person> findAllPerson() {
+        return personMapper.findAllPerson();
+    }
+
     public Person findPerson(long id) {
         return personMapper.findById(id);
     }
 
     public void savePerson(String name, String sex) {
         personMapper.savePerson(name, sex);
+    }
+
+    public void changePersonName(Long id, String name) {
+        personMapper.changePersonInfo(id, name);
     }
 }

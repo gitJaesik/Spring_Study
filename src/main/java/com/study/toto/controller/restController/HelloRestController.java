@@ -5,6 +5,8 @@ import com.study.toto.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class HelloRestController {
 
@@ -20,14 +22,23 @@ public class HelloRestController {
         return "Hello";
     }
 
-    @GetMapping("/person/{id}")
+    @GetMapping("/persons")
+    public List<Person> findAllPerson() {
+        return personService.findAllPerson();
+    }
+
+    @GetMapping("/persons/{id}")
     public Person findPerson(@PathVariable("id") Long id) {
         return personService.findPerson(id);
     }
 
-    @PostMapping("/person")
+    @PostMapping("/persons")
     public void savePerson(@RequestParam String name, @RequestParam String sex) {
         personService.savePerson(name, sex);
     }
 
+    @PutMapping("/persons")
+    public void changePersonInfo(@RequestParam Long id, @RequestParam String name) {
+        personService.changePersonName(id, name);
+    }
 }
