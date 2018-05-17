@@ -8,8 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonService {
 
-    @Autowired
+    private final
     PersonMapper personMapper;
+
+    @Autowired
+    public PersonService(PersonMapper personMapper) {
+        this.personMapper = personMapper;
+    }
 
     public Person findPerson(long id) {
         return personMapper.findById(id);

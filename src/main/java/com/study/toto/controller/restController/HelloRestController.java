@@ -1,21 +1,22 @@
-package com.study.toto.controller;
+package com.study.toto.controller.restController;
 
 import com.study.toto.model.entity.Person;
 import com.study.toto.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 @RestController
 public class HelloRestController {
 
-    @Autowired
-    PersonService personService;
+    private final PersonService personService;
 
-    @GetMapping("/")
-    public String Hello () {
+    @Autowired
+    public HelloRestController(PersonService personService) {
+        this.personService = personService;
+    }
+
+    @GetMapping("/hello")
+    public String Hello() {
         return "Hello";
     }
 
@@ -25,12 +26,7 @@ public class HelloRestController {
     }
 
     @PostMapping("/person")
-    public void savePerson(HttpServletRequest request, HttpServletResponse response ) {
-        String name;
-        name = request.getParameter("name");
-        String sex;
-        sex = request.getParameter("sex");
-
+    public void savePerson(@RequestParam String name, @RequestParam String sex) {
         personService.savePerson(name, sex);
     }
 
